@@ -316,6 +316,7 @@ Decisões arquiteturais documentadas com contexto, motivo e trade-offs:
 - [ADR-006: Connection Pooling e Pool Sizing](docs/adrs/006-connection-pooling.md)
 - [ADR-007: VACUUM, Autovacuum e Bloat Prevention](docs/adrs/007-vacuum-autovacuum.md)
 - [ADR-008: Read Replicas e Separação de Leitura/Escrita](docs/adrs/008-read-replicas.md)
+- [ADR-009: Observabilidade e Testes de Carga](docs/adrs/009-observability-load-testing.md)
 ---
 
 ## Referência completa

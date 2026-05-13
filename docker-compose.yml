@@ -11,3 +11,17 @@ services:
       - pgdata:/var/lib/postgresql/data
 volumes:
   pgdata:
+
+  # ----------------------------------------------------
+  # Jaeger — Distributed Tracing (OpenTelemetry)
+  # Acesse a UI em: http://localhost:16686
+  # ----------------------------------------------------
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: czanix_jaeger
+    ports:
+      - "16686:16686"  # UI
+      - "4317:4317"    # OTLP gRPC
+      - "4318:4318"    # OTLP HTTP
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
