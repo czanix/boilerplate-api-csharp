@@ -37,7 +37,7 @@ CREATE TABLE order_events (
 | **INT** | 4 bytes | ~2.1 bilhões | Maioria das tabelas: users, orders, products, categories |
 | **BIGINT** | 8 bytes | ~9.2 quintilhões | Tabelas de alto volume: events, logs, metrics, IoT data |
 
-**Regra prática:** comece com INT. Se a tabela pode crescer além de centenas de milhões de registros, use BIGINT. Na dúvida, INT basta — migrar de INT para BIGINT é trivial.
+**Regra prática:** Use INT para tabelas estáticas/cadastro (ex: `categories`, `status`). Use BIGINT para tabelas transacionais que crescem diariamente (ex: `orders`, `events`, `users`). **Na dúvida, use BIGINT.** Migrar de INT para BIGINT em produção NÃO é trivial: exige `ALTER TABLE` na PK e em **todas as FKs** que apontam para ela, causando downtime e locks agressivos no banco.
 
 ## Motivo
 
@@ -57,4 +57,4 @@ CREATE TABLE order_events (
 
 - **UUID como PK:** Índice B-tree fragmenta com inserções aleatórias, degradando performance em tabelas grandes (>1M rows)
 - **BIGINT exposto na API:** Vulnerabilidade IDOR — atacante enumera `/api/orders/1`, `/api/orders/2`
-- **BIGINT para tudo:** Desperdício — 99% das tabelas nunca chegam perto de 2 bilhões de registros
+- **BIGINT para tudo:** Desperdício de RAM no banco — 90% das tabelas de configuração/cadastro nunca chegam perto de 2 bilhões de registros.
