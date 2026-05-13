@@ -304,15 +304,18 @@ CREATE INDEX ix_orders_customer_active
 
 ---
 
-## ADRs
+## Architecture Decision Records (ADRs)
 
-| ADR | Decisão |
-|-----|---------|
-| [ADR-001](docs/adrs/001-result-pattern.md) | Result Pattern vs Exception |
-| [ADR-002](docs/adrs/002-clean-architecture.md) | Por que 4 camadas, não 2 |
-| [ADR-003](docs/adrs/003-mediatr-cqrs.md) | MediatR + CQRS — quando faz sentido |
-| [ADR-004](docs/adrs/004-observability.md) | OpenTelemetry desde o início |
+Decisões arquiteturais documentadas com contexto, motivo e trade-offs:
 
+- [ADR-001: INT/BIGINT PK + UUID público](docs/adrs/001-bigint-pk-uuid-public.md)
+- [ADR-002: Result Pattern vs Exceptions](docs/adrs/002-result-pattern-over-exceptions.md)
+- [ADR-003: Clean Architecture com limites pragmáticos](docs/adrs/003-clean-architecture-boundaries.md)
+- [ADR-004: Princípios de Modelagem de Dados](docs/adrs/004-database-design-principles.md)
+- [ADR-005: Partitioning para Tabelas de Alto Volume](docs/adrs/005-table-partitioning.md)
+- [ADR-006: Connection Pooling e Pool Sizing](docs/adrs/006-connection-pooling.md)
+- [ADR-007: VACUUM, Autovacuum e Bloat Prevention](docs/adrs/007-vacuum-autovacuum.md)
+- [ADR-008: Read Replicas e Separação de Leitura/Escrita](docs/adrs/008-read-replicas.md)
 ---
 
 ## Referência completa
